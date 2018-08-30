@@ -1,7 +1,6 @@
-# STI-Polymorphic
-Single-table Inheritance and Polymorphic Associations
+# Single-table Inheritance and Polymorphic Associations
 
-<strong> Single Table Inheritance (STI) </strong>
+# Single Table Inheritance (STI)
 
 What is Single Table Inheritance?
 
@@ -69,13 +68,55 @@ For `Cars` and `Motorcycles`, we want to know the horsepower
 
 We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table
 
+<!-- --------------------------------------------------------------------------------- -->
 
+# Polymorphic Association
+<p align="center">
+  <img src="https://www.ict.social/images/1/csp/oop/polymorphism.png" alt="Example of polymorphic associations using animals" />
+</div>
 
+Polymorphism, in plain English, consists of “poly” (many) and “morph” (form). If there are enough differences between like-groups, then a polymorphic association would be a better fit than single-table inheritance (STI).
 
+Polymorphic Association vs STI is an example of composition vs inheritance.
 
+```
+To favor composition over inheritance is a design principle that gives the design higher flexibility. 
+```
 
+A polymorphic association consists of different classes pointing towards the same class, through a belongs_to and a has_one or has_many relationship. 
 
+Without polymorphic associations (which is perfectly valid):
+```
+class Post
+  belongs_to :person
+  belongs to :group
+end
+class Person
+  has_many :posts
+end
+class Group
+  has_many :posts
+end
+```
 
+With polymorphic associations:
+```
+class Post
+  belongs_to :postable, polymorphic: true
+end
+class Person
+  has_many :posts, as :postable
+end
+class Group
+  has_many :posts, as :postable
+end
+```
+
+It is “Rails-like” to suffix the polymorphic association with “-able”, so that it is explicit to other people reading the code that there is a polymorphic association involved; however, it is not mandatory.
+
+The polymorphic association, Post in this case, will have at least two columns: “X_type” and “X_id”, where “X” is the name of the polymorphic association. Type refers to the type of class that it is being associated with (Person or Group in this case), and id refers to the id of that respective type. As an example, the polymorphic association is able to find all the posts of type Person with the ID of 1. In this scenario, Posts might also have a column called “Content” which contains the content of the post so that there is a meaningful role for the polymorphic association. 
+
+<!-- --------------------------------------------------------------------------------- -->
 
 <h1><strong>STI vs. Polymorphic Association</strong></h1>
 
