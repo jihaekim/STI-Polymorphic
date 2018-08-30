@@ -15,7 +15,7 @@ a dealership that sells cars,motocycles, and bicycles.</p>
 <p>For each vehicle we cant to track <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong>.
 We want to use the same data for each class.</p>
 
-<p>We can create a superclass Vehicle with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
+<p>We can create a superclass `Vehicle` with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
 
 <p>Migration to create the table:</p>
 
@@ -32,7 +32,7 @@ class CreateVehicles < ActiveRecord::Migration[5.1]
 end
 ```
 
-<p>The <strong>type</strong> column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
+<p>The `type` column for the superclass tells Rails that we are using STI and want all the data for `Vehicle` and subclasses to be in the same table in the database.</p>
 
 <p>Model classes look like this:</p>
 
@@ -58,3 +58,10 @@ mustang.price
 harley.price
 => 30000
 ```
+
+<p><strong>Adding functionality</strong></p>
+<p>What is we want more information about the vehicles?</p>
+<p>For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.</p>
+<p>For `Cars` and `Motorcycles`, we want to know the horsepower</p>
+
+<p>We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table</p>
