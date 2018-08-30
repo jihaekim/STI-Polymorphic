@@ -10,12 +10,12 @@ STI is appropriate when your models have shared data or state.
 
 
 <strong><p>Example</p></strong>
-<p>Let's pretend we are creating an app for
-a dealership that sells cars,motocycles, and bicycles.</p>
-<p>For each vehicle we cant to track <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong>.
-We want to use the same data for each class.</p>
+Let's pretend we are creating an app for a dealership that sells cars, motocycles, and bicycles.
 
-<p>We can create a superclass `Vehicle` with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
+For each vehicle we cant to track <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong>.
+We want to use the same data for each class.
+
+We can create a superclass `Vehicle` with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.\
 
 <p>Migration to create the table:</p>
 
