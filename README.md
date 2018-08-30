@@ -9,14 +9,16 @@ Single Table Inheritance is when many subclasses inherit from one superclass wit
 STI is appropriate when your models have shared data or state.
 
 
-<strong>Example</strong>
-Let's pretend we are creating an app for a dealership that sells cars,motocycles, and bicycles.
+<strong><p>Example</p></strong>
+Let's pretend we are creating an app for
+a dealership that sells cars,motocycles, and bicycles.
 For each vehicle we cant to track <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong>.
 We want to use the same data for each class.
 
 We can create a superclass Vehicle with attributes <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong> and our subclasses will inherit all those attributes.
 
-<div>class CreateVehicles < ActiveRecord::Migration[5.1]
+```
+class CreateVehicles < ActiveRecord::Migration[5.1]
   def change                           
     create_table :vehicles do |t|                             
       t.string :type, null: false                         
@@ -25,4 +27,5 @@ We can create a superclass Vehicle with attributes <strong>price</strong>,<stron
       t.boolean :purchased, default: false                                                      
     end                         
   end                       
-end</div>
+end
+```
