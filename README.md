@@ -65,3 +65,42 @@ harley.price
 <p>For `Cars` and `Motorcycles`, we want to know the horsepower</p>
 
 <p>We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table</p>
+
+
+
+When to use STI:
+
+* having many similar models that are unlikely going to change and share similar data, ex: 
+
+Vehicle => Bicycle, Car, Motorcycle
+(all have price, color, and age)
+ * Simple to implement * DRY — saves replicated code using inheritance and shared attributes
+Allows subclasses to have own behavior as necessary
+ 
+Cons:
+
+* Doesn’t scale well: as data grows, table can become large and possibly difficult to maintain/query  
+* Requires care when adding new models or model fields that deviate from the shared fields  
+* Can be difficult to validate or query if many null values exist in table or values overlap
+
+
+
+When to use Polymorphic:
+
+
+Polymorphism is the property in a programming language that allows objects of different types to be substituted for one another in program flow without needing to know ahead of time what the object’s type is.
+
+* Easy to scale in amount of data: information is distributed across several database tables to minimize table bloat  
+* Easy to scale number of models: more models can be easily associated with the polymorphic class  
+* DRY: creates one class that can be used by many other classes
+
+
+* having many models that have many different attributes (that creates extra columns that will not be used or will have null value, also can create conflict when two tables have the same value)
+
+
+Cons:
+
+* More tables can make querying more difficult and expensive as the data grows. (Finding all posts that were created in a certain time frame would need to scan all associated tables) 
+* Cannot have foreign key. The id column can reference any of the associated model tables, which can slow down querying. It must work in conjunction with the type column. 
+* If your tables are very large, a lot of space is used to store the string values for postable_type 
+* Your data integrity is compromised.
