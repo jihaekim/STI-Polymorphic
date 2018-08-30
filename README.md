@@ -9,15 +9,16 @@ Single Table Inheritance is when many subclasses inherit from one superclass wit
 STI is appropriate when your models have shared data or state.
 
 
-<strong><p>Example</p></strong>
+<strong>Example</strong>
+
 Let's pretend we are creating an app for a dealership that sells cars, motocycles, and bicycles.
 
 For each vehicle we cant to track <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong>.
 We want to use the same data for each class.
 
-We can create a superclass `Vehicle` with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.\
+We can create a superclass `Vehicle` with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.
 
-<p>Migration to create the table:</p>
+Migration to create the table:
 
 ```
 class CreateVehicles < ActiveRecord::Migration[5.1]
@@ -32,9 +33,9 @@ class CreateVehicles < ActiveRecord::Migration[5.1]
 end
 ```
 
-<p>The `type` column for the superclass tells Rails that we are using STI and want all the data for `Vehicle` and subclasses to be in the same table in the database.</p>
+The `type` column for the superclass tells Rails that we are using STI and want all the data for `Vehicle` and subclasses to be in the same table in the database.
 
-<p>Model classes look like this:</p>
+Model classes look like this:
 
 ```
 class Vehicle < ApplicationRecord
@@ -59,12 +60,13 @@ harley.price
 => 30000
 ```
 
-<p><strong>Adding functionality</strong></p>
-<p>What is we want more information about the vehicles?</p>
-<p>For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.</p>
-<p>For `Cars` and `Motorcycles`, we want to know the horsepower</p>
+<strong>Adding functionality</strong>
 
-<p>We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table</p>
+What is we want more information about the vehicles?
+For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.
+For `Cars` and `Motorcycles`, we want to know the horsepower
+
+We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table
 
 
 
