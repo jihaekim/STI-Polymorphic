@@ -32,6 +32,7 @@ end
 <p>The <strong>type</strong> column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
 
 <p>Our model classes look like this</p>
+
 ```
 class Vehicle < ApplicationRecord
 end
