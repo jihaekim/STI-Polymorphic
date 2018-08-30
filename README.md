@@ -60,55 +60,54 @@ harley.price
 ```
 
 <p><strong>Adding functionality</strong></p>
+<p>What is we want more information about the vehicles?</p>
+<p>For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.</p>
+<p>For `Cars` and `Motorcycles`, we want to know the horsepower</p>
 
-What if we want more information about the vehicles?
-
-For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.
-
-For `Cars` and `Motorcycles`, we want to know the horsepower
-
-We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table.
+<p>We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table</p>
 
 
 
 
 
 
-<h1><strong>Single Table Inheritance</strong></h1>
-
-# When and why you should use STI:
-
-* When you have many similar models that are unlikely going to change and share similar data, ex: 
-<p><strong>Vehicle => Bicycle, Car, Motorcycle (all have price, color, and age)</string></p>
-
-* Simple to implement
-
-* DRY — saves replicated code using inheritance and shared attributes 
-* Allows subclasses to have own behavior as necessary
-
-# Cons:
-
-* Doesn’t scale well: as data grows, table can become large and possibly difficult to maintain and query
-* Requires care when adding new models or model fields that deviate from the shared fields
-* Can be difficult to validate or query if many null values exist in table or values overlap
-
-<h1><strong>Polymorphic Association</strong></h1>
-
-# When and why you should use Polymorphic Association:
 
 
-Polymorphism is the property in a programming language that allows objects of different types to be substituted for one another in program flow without needing to know ahead of time what the object’s type is.
 
-* Easy to scale in amount of data: information is distributed across several database tables to minimize table bloat  
-* Easy to scale number of models: more models can be easily associated with the polymorphic class  
-* DRY: creates one class that can be used by many other classes
+<h1><strong>STI vs. Polymorphic Association</strong></h1>
 
-* Having many models that have many different behaviors ( creating extra columns that will not be used or will have null value, also can create conflict when two tables have the same value)
+<h3> When and why you should use STI:</h3>
+  <ul>
+    <li> When you have many similar models that are unlikely going to change and share similar data, ex: 
+      <p><strong>Vehicle => Bicycle, Car, Motorcycle (all have price, color, and age)</string></p> </li>
+    <li>Simple to implement</li>
+    <li>DRY — saves replicated code using inheritance and shared attributes</li>
+    <li>Allows subclasses to have own behavior as necessary</li>
+   </ul>
+
+<h3>Cons:</h3>
+  <ul>
+    <li>Doesn’t scale well: as data grows, table can become large and possibly difficult to maintain and query</li> 
+    <li>Requires care when adding new models or model fields that deviate from the shared fields</li>
+    <li>Can be difficult to validate or query if many null values exist in table or values overlap</li>
+  </ul>
 
 
-# Cons:
+<h3>When and why you should use Polymorphic Association:</h3>
 
-* More tables can make querying more difficult and expensive as the data grows. (Finding all posts that were created in a certain time frame would need to scan all associated tables) 
-* Cannot have foreign key. The id column can reference any of the associated model tables, which can slow down querying. It must work in conjunction with the type column. 
-* If your tables are very large, a lot of space is used to store the string values for postable_type 
-* Your data integrity is compromised.
+<p>Polymorphism is the property in a programming language that allows objects of different types to be substituted for one another in program flow without needing to know ahead of time what the object’s type is.</p>
+  <ul>
+    <li>Easy to scale in amount of data: information is distributed across several database tables to minimize table bloat</li>
+    <li>Easy to scale number of models: more models can be easily associated with the polymorphic class</li>
+    <li>DRY: creates one class that can be used by many other classes</li>
+    <li>Having many models that have many different behaviors ( creating extra columns that will not be used or will have null         value, also can create conflict when two tables have the same value)</li>
+  </ul>
+
+
+
+<h3>Cons:</h3>
+  <ul>
+    <li>More tables can make querying more difficult and expensive as the data grows. (Finding all posts that were created in a       certain time frame would need to scan all associated tables)</li>
+    <li>Cannot have foreign key. The id column can reference any of the associated model tables, which can slow down querying.         It must work in conjunction with the type column.</li>
+    <li>If your tables are very large, a lot of space is used to store the string values for postable_type</li>
+ </ul>
