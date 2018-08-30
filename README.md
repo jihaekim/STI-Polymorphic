@@ -62,7 +62,8 @@ harley.price
 
 <strong>Adding functionality</strong>
 
-What is we want more information about the vehicles?
+What if we want more information about the vehicles?
+
 For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.
 For `Cars` and `Motorcycles`, we want to know the horsepower
 
