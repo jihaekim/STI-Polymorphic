@@ -12,11 +12,12 @@ STI is appropriate when your models have shared data or state.
 <strong><p>Example</p></strong>
 <p>Let's pretend we are creating an app for
 a dealership that sells cars,motocycles, and bicycles.</p>
-<p>For each vehicle we cant to track <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong>.
+<p>For each vehicle we cant to track <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong>.
 We want to use the same data for each class.</p>
 
-<p>We can create a superclass Vehicle with attributes <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
+<p>We can create a superclass Vehicle with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
 
+<p>Migration to create the table:</p>
 ```
 class CreateVehicles < ActiveRecord::Migration[5.1]
   def change                           
@@ -31,7 +32,7 @@ end
 ```
 <p>The <strong>type</strong> column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
 
-<p>Our model classes look like this</p>
+<p>Model classes look like this:</p>
 
 ```
 class Vehicle < ApplicationRecord
@@ -42,4 +43,16 @@ class Motorcycle < Vehicle
 end
 class Car < Vehicle
 end
+```
+
+
+Subclasses share the same data fields which allows us to make the same calls on objects from different classes:
+
+```
+mustang = Car.new(price: 50000, color: red)
+harley = Motorcycle.new(price: 30000, color: black)
+mustang.price
+=> 50000
+harley.price
+=> 30000
 ```
