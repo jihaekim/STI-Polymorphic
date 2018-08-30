@@ -18,6 +18,7 @@ We want to use the same data for each class.</p>
 <p>We can create a superclass Vehicle with attributes <strong>price</strong>, <strong>color</strong>, and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
 
 <p>Migration to create the table:</p>
+
 ```
 class CreateVehicles < ActiveRecord::Migration[5.1]
   def change                           
@@ -30,6 +31,7 @@ class CreateVehicles < ActiveRecord::Migration[5.1]
   end                       
 end
 ```
+
 <p>The <strong>type</strong> column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
 
 <p>Model classes look like this:</p>
