@@ -61,14 +61,13 @@ harley.price
 
 <p><strong>Adding functionality</strong></p>
 
-<p>What if we want more information about the vehicles?</p>
+What if we want more information about the vehicles?
 
-<p>For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.</p>
+For `Bicycles`, we want to know if the bike is a road, mountain or hybrid bike.
 
-<p>For `Cars` and `Motorcycles`, we want to know the horsepower</p>
+For `Cars` and `Motorcycles`, we want to know the horsepower
 
-<p>We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table</p>
-
+We can create a migration to add `bicycle_type` and `horsepower` to the `Vehicles` table.
 
 
 
