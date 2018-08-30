@@ -10,12 +10,12 @@ STI is appropriate when your models have shared data or state.
 
 
 <strong><p>Example</p></strong>
-Let's pretend we are creating an app for
-a dealership that sells cars,motocycles, and bicycles.
-For each vehicle we cant to track <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong>.
-We want to use the same data for each class.
+<p>Let's pretend we are creating an app for
+a dealership that sells cars,motocycles, and bicycles.</p>
+<p>For each vehicle we cant to track <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong>.
+We want to use the same data for each class.</p>
 
-We can create a superclass Vehicle with attributes <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong> and our subclasses will inherit all those attributes.
+<p>We can create a superclass Vehicle with attributes <strong>price</strong>,<strong>color</strong>,and <strong>purchased</strong> and our subclasses will inherit all those attributes.</p>
 
 ```
 class CreateVehicles < ActiveRecord::Migration[5.1]
@@ -27,5 +27,18 @@ class CreateVehicles < ActiveRecord::Migration[5.1]
       t.boolean :purchased, default: false                                                      
     end                         
   end                       
+end
+```
+<p>The <strong>type</strong> column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
+
+<p>Our model classes look like this</p>
+```
+class Vehicle < ApplicationRecord
+end
+class Bicycle < Vehicle
+end
+class Motorcycle < Vehicle
+end
+class Car < Vehicle
 end
 ```
