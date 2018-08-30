@@ -29,7 +29,7 @@ class CreateVehicles < ActiveRecord::Migration[5.1]
   end                       
 end
 ```
-<p>The ```type``` column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
+<p>The <strong>type</strong> column for the superclass tells Rails that we are using STI and want all the data for <strong>Vehicle</strong> and subclasses to be in the same table in the database.</p>
 
 <p>Our model classes look like this</p>
 
